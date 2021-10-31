@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'tracks/:id', component: TrackComponent },
   { path: 'artists/:id', component: ArtistComponent },
-  { path: 'album/:id', component: AlbumComponent }
+  { path: 'albums/:id', component: AlbumComponent }
 ];
 
 @NgModule({
