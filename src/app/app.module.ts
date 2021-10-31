@@ -17,6 +17,7 @@ import { ArtistComponent } from './artist/artist.component';
 import { AlbumComponent } from './album/album.component';
 
 import { SpotifyService } from './services/spotify.service';
+import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'search', pathMatch: 'full' },
@@ -41,6 +42,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
+    { provide: AuthService, useClass: AuthService },
     { provide: SpotifyService, useClass: SpotifyService },
     { provide: APP_BASE_HREF, useValue: '/' },
     { provide: LocationStrategy, useClass: HashLocationStrategy }
