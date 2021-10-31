@@ -16,11 +16,21 @@ import { TrackComponent } from './track/track.component';
 import { ArtistComponent } from './artist/artist.component';
 import { AlbumComponent } from './album/album.component';
 
+import { LoginComponent } from './login/login.component';
+import { ProtectedComponent } from './protected/protected.component';
+
 import { SpotifyService } from './services/spotify.service';
 import { AuthService } from './services/auth.service';
-import { LoginComponent } from './login/login.component';
+
+import { LoggedInGuard } from './guards/logged-in.guard';
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { 
+    path: 'protected', 
+    component: ProtectedComponent, 
+    canActivate: [ LoggedInGuard] 
+  },
   { path: '', redirectTo: 'search', pathMatch: 'full' },
   { path: 'search', component: SearchComponent },
   { path: 'tracks/:id', component: TrackComponent },
@@ -35,7 +45,8 @@ const routes: Routes = [
     TrackComponent,
     ArtistComponent,
     AlbumComponent,
-    LoginComponent
+    LoginComponent,
+    ProtectedComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +55,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
+    { provide: LoggedInGuard, useClass: LoggedInGuard },
     { provide: AuthService, useClass: AuthService },
     { provide: SpotifyService, useClass: SpotifyService },
     { provide: APP_BASE_HREF, useValue: '/' },
