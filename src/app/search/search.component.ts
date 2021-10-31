@@ -17,6 +17,7 @@ export class SearchComponent implements OnInit {
               private route: ActivatedRoute) { 
     this.query = '';
     this.results = null;
+    
     this.route
       .queryParams
       .subscribe(params => { this.query = params['query'] || ''; });
@@ -32,7 +33,6 @@ export class SearchComponent implements OnInit {
   }
 
   search(): void {
-    console.log('this.query', this.query);
     if(!this.query) {
       return;
     }

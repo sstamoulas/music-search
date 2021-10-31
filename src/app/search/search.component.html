@@ -20,10 +20,10 @@
 
     <div class="row">
       <div class="col-sm-6 col-md-4" *ngFor="let t of results">
-        <div class="thumbnail">
+        <div class="img-thumbnail">
           <div class="content">
-            <img src="{{ t.album.images[0].url }}" class="img-responsive" />
-            <div class="caption">
+            <img src="{{ t.album.images[0].url }}" class="img-fluid" />
+            <div class="figure-caption">
               <h3>
                 <a [routerLink]="['/artists', t.artists[0].id]">
                   {{ t.artists[0].name }}
@@ -36,6 +36,7 @@
                 </a>
               </p>
             </div>
+            <hr />
             <div class="attribution">
               <h4>
                 <a [routerLink]="['/albums', t.album.id]">

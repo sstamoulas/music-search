@@ -12,20 +12,27 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
-// import { AlbumComponent } from './album/album.component';
-// import { ArtistComponent } from './artist/artist.component';
+import { TrackComponent } from './track/track.component';
+import { ArtistComponent } from './artist/artist.component';
+import { AlbumComponent } from './album/album.component';
 
-import { SPOTIFY_PROVIDERS } from './services/spotify.service';
+import { SpotifyService } from './services/spotify.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'search', pathMatch: 'full' },
-  { path: 'search', component: SearchComponent }
+  { path: 'search', component: SearchComponent },
+  { path: 'tracks/:id', component: TrackComponent },
+  { path: 'artists/:id', component: ArtistComponent },
+  { path: 'album/:id', component: AlbumComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
+    SearchComponent,
+    TrackComponent,
+    ArtistComponent,
+    AlbumComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    SPOTIFY_PROVIDERS,
+    { provide: SpotifyService, useClass: SpotifyService },
     { provide: APP_BASE_HREF, useValue: '/' },
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],

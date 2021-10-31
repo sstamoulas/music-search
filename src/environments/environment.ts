@@ -11,5 +11,5 @@ export const environment = {
   // Here's our Spotify API token you can use for testing. Acquiring one of these tokens
   // is beyond the scope of this book. See spotify's developer docs for details
   // See the scripts/spotifyKey.js script for updating this file
-  spotifyApiKey: SpotifyAPIKey
+  SpotifyAPIKey
 };
